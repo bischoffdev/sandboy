@@ -1,32 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Created with Liquid Technologies Online Tools 1.0 (https://www.liquid-technologies.com) -->
-<testsuite xsi:noNamespaceSchemaLocation="schema.xsd" version="string" name="string" time="" tests="string"
-           errors="string" skipped="string" failures="string" group="string"
-           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<testsuite
+        xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd"
+        version="string" name="string" time="" tests="string"
+        errors="string" skipped="string" failures="string" group="string"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <properties>
-        <property name="string" value="string"/>
-        <property name="string" value="string"/>
-        <property name="string" value="string"/>
-        <property name="string" value="string"/>
-    </properties>
-    <properties>
-        <property name="string" value="string"/>
-        <property name="string" value="string"/>
-        <property name="string" value="string"/>
-        <property name="string" value="string"/>
-    </properties>
-    <properties>
-        <property name="string" value="string"/>
-    </properties>
-    <properties>
-        <property name="string" value="string"/>
-        <property name="string" value="string"/>
-        <property name="string" value="string"/>
-        <property name="string" value="string"/>
-    </properties>
-    <properties>
-        <property name="string" value="string"/>
-        <property name="string" value="string"/>
+        <property name="property1" value="property1value"/>
+        <property name="property2" value="property2value"/>
+        <property name="property3" value="property3value"/>
     </properties>
     <testcase name="string" classname="string" group="string" time="">
         <failure type="string">string</failure>
