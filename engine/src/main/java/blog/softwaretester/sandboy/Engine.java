@@ -1,17 +1,12 @@
 package blog.softwaretester.sandboy;
 
-import blog.softwaretester.sandboy.xml.XmlParser;
-
 import javax.inject.Inject;
 
-public class Core {
-
+public class Engine {
     @Inject
-    public Core() {
+    public Engine() {
         System.out.println("INJECT");
     }
-
-
 
     public void generateReport() {
         System.out.println("GENERATE REPORT");
