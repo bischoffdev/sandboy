@@ -26,6 +26,7 @@
         <dagger.version>2.46</dagger.version>
         <property-aggregator.version>1.5.0</property-aggregator.version>
         <maven-jar-plugin.version>3.2.2</maven-jar-plugin.version>
+        <jackson-core.version>2.15.0</jackson-core.version>
     </properties>
 
     <dependencies>
@@ -35,9 +36,9 @@
             <version>${freemarker.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.jdom</groupId>
-            <artifactId>jdom2</artifactId>
-            <version>${jdom2.version}</version>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-xml</artifactId>
+            <version>2.15.0</version>
         </dependency>
         <dependency>
             <groupId>com.google.dagger</groupId>
