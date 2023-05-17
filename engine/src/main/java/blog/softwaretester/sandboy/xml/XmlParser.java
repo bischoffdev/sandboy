@@ -6,6 +6,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
+import java.util.Optional;
+
 import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
 import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.NONE;
 
@@ -21,6 +23,11 @@ public class XmlParser {
     }
 
     public TestSuite xmlStringToTestSuite(final String xmlString) throws JsonProcessingException {
-        return xmlMapper.readValue(xmlString, TestSuite.class);
+        try {
+            return xmlMapper.readValue(xmlString, TestSuite.class);
+        } catch (Exception e) {
+
+        }
+        return null;
     }
 }

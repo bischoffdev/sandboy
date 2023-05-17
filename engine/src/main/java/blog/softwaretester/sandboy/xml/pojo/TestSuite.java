@@ -1,6 +1,7 @@
 package blog.softwaretester.sandboy.xml.pojo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 
 import java.util.List;
@@ -10,7 +11,8 @@ import java.util.List;
 public class TestSuite {
     public List<Property> properties;
     @JacksonXmlElementWrapper(useWrapping = false)
-    private List<Testcase> testcase;
+    @JsonProperty("testcase")
+    private List<Testcase> testcases;
     private String name;
     private double time;
     private int tests;
@@ -23,8 +25,8 @@ public class TestSuite {
         return properties;
     }
 
-    public List<Testcase> getTestcase() {
-        return testcase;
+    public List<Testcase> getTestcases() {
+        return testcases;
     }
 
     public String getName() {
@@ -59,7 +61,7 @@ public class TestSuite {
     public String toString() {
         return "TestSuite{" +
                 "properties=" + properties +
-                ", testcase=" + testcase +
+                ", testcase=" + testcases +
                 ", name='" + name + '\'' +
                 ", time=" + time +
                 ", tests=" + tests +

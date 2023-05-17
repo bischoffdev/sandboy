@@ -12,7 +12,7 @@
 
     <name>Sandboy Parent</name>
     <description>The Sandboy parent POM defining core dependencies.</description>
-    <url>https://github.com/trivago/sandboy</url>
+    <url>https://github.com/bischoffdev/sandboy</url>
 
     <modules>
         <module>engine</module>
@@ -31,20 +31,23 @@
         <maven.gpg.plugin.version>3.0.1</maven.gpg.plugin.version>
         <nexus.staging.maven.plugin.version>1.6.13</nexus.staging.maven.plugin.version>
         <maven.gpg.plugin.version>3.0.1</maven.gpg.plugin.version>
+        <tinylog-impl.version>2.5.0</tinylog-impl.version>
+        <junit-jupiter.version>5.9.3</junit-jupiter.version>
+        <mockito-core.version>5.3.1</mockito-core.version>
     </properties>
 
     <inceptionYear>2023</inceptionYear>
 
     <organization>
-        <name>trivago N.V.</name>
-        <url>https://www.trivago.de</url>
+        <name>softwaretester.blog</name>
+        <url>https://www.softwaretester.blog</url>
     </organization>
 
     <developers>
         <developer>
             <name>Benjamin Bischoff</name>
-            <organization>trivago N.V.</organization>
-            <organizationUrl>https://www.trivago.de</organizationUrl>
+            <organization>softwaretester.blog</organization>
+            <organizationUrl>https://www.softwaretester.blog</organizationUrl>
             <roles>
                 <role>Test Automation Engineer</role>
             </roles>
@@ -54,7 +57,7 @@
 
     <issueManagement>
         <system>Github</system>
-        <url>https://github.com/trivago/sandboy/issues</url>
+        <url>https://github.com/bischoffdev/sandboy/issues</url>
     </issueManagement>
 
     <licenses>
@@ -67,9 +70,9 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:git@github.com:trivago/sandboy.git</connection>
+        <connection>scm:git:git@github.com:bischoffdev/sandboy.git</connection>
         <developerConnection>scm:git:git@github.com:trivago/sandboy.git</developerConnection>
-        <url>https://git@github.com:trivago/sandboy.git</url>
+        <url>https://git@github.com:bischoffdev/sandboy.git</url>
     </scm>
 
     <distributionManagement>
@@ -83,28 +86,25 @@
         </repository>
     </distributionManagement>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter</artifactId>
-                <version>5.9.3</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.mockito</groupId>
-                <artifactId>mockito-core</artifactId>
-                <version>5.3.1</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.openpojo</groupId>
-                <artifactId>openpojo</artifactId>
-                <version>0.9.1</version>
-                <scope>test</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito-core.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.tinylog</groupId>
+            <artifactId>tinylog-impl</artifactId>
+            <version>${tinylog-impl.version}</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <pluginManagement>
