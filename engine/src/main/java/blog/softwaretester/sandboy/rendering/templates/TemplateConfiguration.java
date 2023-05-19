@@ -1,18 +1,19 @@
 package blog.softwaretester.sandboy.rendering.templates;
 
+import blog.softwaretester.sandboy.exceptions.SandboyException;
 import blog.softwaretester.sandboy.settings.Constants;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateExceptionHandler;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
+
+@Singleton
 
 public class TemplateConfiguration {
     private Configuration configuration;
 
-    /**
-     * Default constructor.
-     */
     @Inject
     public TemplateConfiguration() {
     }
@@ -26,12 +27,12 @@ public class TemplateConfiguration {
         configuration.setLogTemplateExceptions(false);
     }
 
-    public Template getTemplate(final String templateName) throws Exception {
+    public Template getTemplate(final String templateName) throws SandboyException {
         Template template;
         try {
             template = configuration.getTemplate(templateName + Constants.TEMPLATE_FILE_EXTENSION);
         } catch (Exception e) {
-            throw new Exception("Template '" + templateName + "' was not found or not parsable: " +
+            throw new SandboyException("Template '" + templateName + "' was not found or not parsable: " +
                     e.getMessage());
         }
         return template;

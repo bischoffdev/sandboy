@@ -1,5 +1,6 @@
 package blog.softwaretester.sandboy.rendering.templates;
 
+import blog.softwaretester.sandboy.exceptions.SandboyException;
 import blog.softwaretester.sandboy.settings.Constants;
 
 import javax.inject.Inject;
@@ -15,7 +16,7 @@ public class TemplateEngine {
         templateConfiguration.init(Constants.BASE_TEMPLATE_PATH);
     }
 
-    public freemarker.template.Template getTemplate(final Template template) throws Exception {
+    public freemarker.template.Template getTemplate(final Template template) throws SandboyException {
         return templateConfiguration.getTemplate(template.fileName);
     }
 

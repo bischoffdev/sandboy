@@ -4,7 +4,7 @@
     <title>Sandboy Report</title>
 </head>
 <body>
-    HUHU
+HUHU
 </body>
 </html>
 

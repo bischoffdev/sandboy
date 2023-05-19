@@ -7,7 +7,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import java.util.List;
 
 @SuppressWarnings("unused")
-@JsonIgnoreProperties(value = { "noNamespaceSchemaLocation", "version" })
+@JsonIgnoreProperties(value = {"noNamespaceSchemaLocation", "version"})
 public class TestSuite {
     public List<Property> properties;
     @JacksonXmlElementWrapper(useWrapping = false)

@@ -1,6 +1,8 @@
 package blog.softwaretester.sandboy.xml;
 
+import blog.softwaretester.sandboy.exceptions.SandboyException;
 import blog.softwaretester.sandboy.filesystem.FileIO;
+import blog.softwaretester.sandboy.logger.SandboyLogger;
 import blog.softwaretester.sandboy.xml.pojo.TestSuite;
 import blog.softwaretester.sandboy.xml.pojo.Testcase;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -8,7 +10,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import javax.xml.parsers.ParserConfigurationException;
-
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -18,7 +19,8 @@ class XmlParserTest {
 
     @BeforeEach
     void setup() throws ParserConfigurationException {
-        parser = new XmlParser();
+        SandboyLogger logger = new SandboyLogger();
+        parser = new XmlParser(logger);
     }
 
     @Test
@@ -28,7 +30,7 @@ class XmlParserTest {
     }
 
     @Test
-    void parseValidFullXML() throws Exception {
+    void parseValidFullXML() throws Exception, SandboyException {
         String xml = new FileIO().readContentFromFile("src/test/resources/example_report.xml");
         TestSuite testSuite = parser.xmlStringToTestSuite(xml);
         assertEquals(testSuite.getName(), "example.someTest");

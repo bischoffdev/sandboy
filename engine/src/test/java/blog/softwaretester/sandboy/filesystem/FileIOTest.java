@@ -1,5 +1,6 @@
 package blog.softwaretester.sandboy.filesystem;
 
+import blog.softwaretester.sandboy.exceptions.SandboyException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,15 +17,15 @@ class FileIOTest {
 
     @Test
     void readNonExistingFile() {
-        Exception exception = assertThrows(
-                Exception.class,
+        SandboyException exception = assertThrows(
+                SandboyException.class,
                 () -> fileIO.readContentFromFile("nonExistentFile")
         );
         assertEquals("File nonExistentFile does not exist!", exception.getMessage());
     }
 
     @Test
-    void readExistingFile() throws Exception {
+    void readExistingFile() throws SandboyException {
         String contents = fileIO.readContentFromFile("src/test/resources/example_report.xml");
         assertTrue(contents.startsWith("<?xml"));
     }
