@@ -4,8 +4,12 @@ import blog.softwaretester.sandboy.exceptions.SandboyException;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.Objects;
 
 import static java.nio.file.Files.readAllBytes;
 
@@ -21,6 +25,43 @@ public class FileIO {
             return new String(bytes).trim();
         } catch (IOException e) {
             throw new SandboyException("File " + filePath + " does not exist!");
+        }
+    }
+
+    public void createDirectory(final String dirName) throws SandboyException {
+        File directory = new File(dirName);
+        if (!directory.exists() && !directory.mkdirs()) {
+            throw new SandboyException("Could not create directory " + dirName + ".");
+        }
+    }
+
+    public void copyResourceFromJar(final String resourceName, final String destination) throws SandboyException {
+        final int BYTE_BLOCK = 4096;
+        try (InputStream inputStream = this.getClass().getResourceAsStream(resourceName)) {
+            System.out.println(inputStream);
+
+            int readBytes;
+            byte[] buffer = new byte[BYTE_BLOCK];
+            try (OutputStream outputStream = new FileOutputStream(destination)) {
+                while ((readBytes = Objects.requireNonNull(inputStream).read(buffer)) > 0) {
+                    outputStream.write(buffer, 0, readBytes);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                throw new SandboyException("Cannot write resource '" + resourceName + "': " + e.getMessage());
+            }
+        } catch (Exception e) {
+            throw new SandboyException("Cannot process resource '" + resourceName + "': " + e.getMessage());
+        }
+    }
+
+    public void copyResource(final String source, final String destination) throws SandboyException {
+        Path sourcePath = Paths.get(source);
+        Path destinationPath = Paths.get(destination);
+        try {
+            Files.copy(sourcePath, destinationPath, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            throw new SandboyException("Cannot copy resource '" + source + "': " + e.getMessage());
         }
     }
 }

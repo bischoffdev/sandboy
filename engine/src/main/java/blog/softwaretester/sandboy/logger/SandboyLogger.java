@@ -11,6 +11,10 @@ public class SandboyLogger {
     public SandboyLogger() {
     }
 
+    public void logSeparator() {
+        Logger.info("------------------------------------------------------------------------");
+    }
+
     public void info(final CharSequence logString) {
         Logger.info(logString);
     }

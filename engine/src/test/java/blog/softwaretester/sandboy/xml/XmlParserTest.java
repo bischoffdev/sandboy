@@ -5,7 +5,6 @@ import blog.softwaretester.sandboy.filesystem.FileIO;
 import blog.softwaretester.sandboy.logger.SandboyLogger;
 import blog.softwaretester.sandboy.xml.pojo.TestSuite;
 import blog.softwaretester.sandboy.xml.pojo.Testcase;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,6 +12,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class XmlParserTest {
     private XmlParser parser;
@@ -24,13 +24,13 @@ class XmlParserTest {
     }
 
     @Test
-    void parseValidPartialXML() throws JsonProcessingException {
+    void parseValidPartialXML() throws SandboyException {
         String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><testsuite name=\"example.someTest\"><properties></properties></testsuite>";
         parser.xmlStringToTestSuite(xml);
     }
 
     @Test
-    void parseValidFullXML() throws Exception, SandboyException {
+    void parseValidFullXML() throws SandboyException {
         String xml = new FileIO().readContentFromFile("src/test/resources/example_report.xml");
         TestSuite testSuite = parser.xmlStringToTestSuite(xml);
         assertEquals(testSuite.getName(), "example.someTest");
@@ -41,8 +41,13 @@ class XmlParserTest {
     }
 
     @Test
-    void parseWrongXML() throws Exception {
+    void parseWrongXML() {
         String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
-        parser.xmlStringToTestSuite(xml);
+        SandboyException exception = assertThrows(
+                SandboyException.class,
+                () -> parser.xmlStringToTestSuite(xml)
+        );
+        assertEquals("Could not map XML: Unexpected EOF in prolog\n" +
+                " at [row,col {unknown-source}]: [1,38]", exception.getMessage());
     }
 }
