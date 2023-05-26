@@ -9,7 +9,10 @@ import blog.softwaretester.sandboy.xml.XmlParser;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class EngineTest {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+class SandboyEngineTest {
 
     private SandboyEngine engine;
 
@@ -18,14 +21,18 @@ class EngineTest {
         SandboyLogger logger = new SandboyLogger();
         PropertyManager properties = new PropertyManager(logger);
         FileIO fileIO = new FileIO();
-        XmlParser parser = new XmlParser(logger);
+        XmlParser parser = new XmlParser();
         ReportGenerator reportGenerator = new ReportGenerator(properties, fileIO);
         engine = new SandboyEngine(logger, properties, fileIO, parser, reportGenerator);
     }
 
     @Test
     void invocation() throws SandboyException {
-        engine.build("", "");
+        SandboyException exception = assertThrows(
+                SandboyException.class,
+                () -> engine.build("", "")
+        );
+        assertEquals("File  does not exist!", exception.getMessage());
     }
 
     @Test

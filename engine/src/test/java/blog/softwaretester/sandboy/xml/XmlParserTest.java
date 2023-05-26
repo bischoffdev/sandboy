@@ -2,13 +2,11 @@ package blog.softwaretester.sandboy.xml;
 
 import blog.softwaretester.sandboy.exceptions.SandboyException;
 import blog.softwaretester.sandboy.filesystem.FileIO;
-import blog.softwaretester.sandboy.logger.SandboyLogger;
 import blog.softwaretester.sandboy.xml.pojo.TestSuite;
 import blog.softwaretester.sandboy.xml.pojo.Testcase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import javax.xml.parsers.ParserConfigurationException;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -18,9 +16,8 @@ class XmlParserTest {
     private XmlParser parser;
 
     @BeforeEach
-    void setup() throws ParserConfigurationException {
-        SandboyLogger logger = new SandboyLogger();
-        parser = new XmlParser(logger);
+    void setup() {
+        parser = new XmlParser();
     }
 
     @Test
@@ -33,11 +30,11 @@ class XmlParserTest {
     void parseValidFullXML() throws SandboyException {
         String xml = new FileIO().readContentFromFile("src/test/resources/example_report.xml");
         TestSuite testSuite = parser.xmlStringToTestSuite(xml);
-        assertEquals(testSuite.getName(), "example.someTest");
+        assertEquals("My Test Suite", testSuite.getName());
         List<Testcase> testcases = testSuite.getTestcases();
-        assertEquals(testcases.get(0).getName(), "Testcase number 1");
-        assertEquals(testcases.get(1).getName(), "Testcase number 2");
-        assertEquals(testcases.get(2).getName(), "Testcase number 3");
+        assertEquals("Testcase number 1", testcases.get(0).getName());
+        assertEquals("Testcase number 2", testcases.get(1).getName());
+        assertEquals("Testcase number 3", testcases.get(2).getName());
     }
 
     @Test
@@ -48,6 +45,6 @@ class XmlParserTest {
                 () -> parser.xmlStringToTestSuite(xml)
         );
         assertEquals("Could not map XML: Unexpected EOF in prolog\n" +
-                " at [row,col {unknown-source}]: [1,38]", exception.getMessage());
+                     " at [row,col {unknown-source}]: [1,38]", exception.getMessage());
     }
 }

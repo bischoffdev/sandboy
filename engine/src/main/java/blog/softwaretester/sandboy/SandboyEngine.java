@@ -4,7 +4,9 @@ import blog.softwaretester.sandboy.exceptions.SandboyException;
 import blog.softwaretester.sandboy.filesystem.FileIO;
 import blog.softwaretester.sandboy.logger.SandboyLogger;
 import blog.softwaretester.sandboy.properties.PropertyManager;
+import blog.softwaretester.sandboy.rendering.RenderingUtils;
 import blog.softwaretester.sandboy.rendering.ReportGenerator;
+import blog.softwaretester.sandboy.settings.Constants;
 import blog.softwaretester.sandboy.xml.XmlParser;
 import blog.softwaretester.sandboy.xml.pojo.TestSuite;
 
@@ -41,7 +43,7 @@ public class SandboyEngine {
         properties.setReportPath(generatedReportPath);
 
         logger.logSeparator();
-        logger.info("[ Sandboy ]");
+        logger.info(String.format(" [ Sandboy v%s ]", RenderingUtils.getVersion()));
         logger.logSeparator();
         properties.log();
 
@@ -50,5 +52,8 @@ public class SandboyEngine {
 
         TestSuite testSuite = parser.xmlStringToTestSuite(xmlContent);
         reportGenerator.generate(testSuite);
+        logger.info(
+                "=> Sandboy Report: " + properties.getReportPath() + "/" +
+                Constants.START_PAGE + Constants.HTML_FILE_EXTENSION);
     }
 }

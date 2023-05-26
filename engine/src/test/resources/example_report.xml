@@ -3,7 +3,7 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-testSuite-3.0.xsd"
         version="3.0"
-        name="example.someTest" time="28.844" tests="2" errors="0" skipped="0" failures="0">
+        name="My Test Suite" time="28.844" tests="2" errors="0" skipped="0" failures="0">
     <properties>
         <property name="property1" value="value1"/>
         <property name="property2" value="value2"/>

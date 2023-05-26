@@ -11,7 +11,7 @@ import javax.inject.Singleton;
 @Singleton
 public class ReportGenerator {
     private final PropertyManager propertyManager;
-    private FileIO fileIO;
+    private final FileIO fileIO;
 
     @Inject
     public ReportGenerator(final PropertyManager propertyManager, final FileIO fileIO) {
@@ -21,6 +21,7 @@ public class ReportGenerator {
 
     public void generate(final TestSuite testSuite) throws SandboyException {
         createAssets();
+        
     }
 
     private void createAssets() throws SandboyException {
