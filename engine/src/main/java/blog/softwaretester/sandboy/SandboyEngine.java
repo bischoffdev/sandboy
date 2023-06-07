@@ -11,6 +11,9 @@ import blog.softwaretester.sandboy.xml.XmlParser;
 import blog.softwaretester.sandboy.xml.pojo.TestSuite;
 
 import javax.inject.Inject;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SandboyEngine {
 
@@ -47,11 +50,21 @@ public class SandboyEngine {
         logger.logSeparator();
         properties.log();
 
-        String xmlContent = fileIO.readContentFromFile(surefireSourcePath);
-        logger.info(xmlContent);
+        List<Path> xmlFilePaths = fileIO.getXmlFilePaths(surefireSourcePath);
 
-        TestSuite testSuite = parser.xmlStringToTestSuite(xmlContent);
-        reportGenerator.generate(testSuite);
+        List<TestSuite> testSuites = new ArrayList<>();
+        for (Path xmlFilePath : xmlFilePaths) {
+            String xmlContent = fileIO.readContentFromFile(xmlFilePath.toString());
+
+            System.out.println("...");
+            System.out.println(xmlFilePath);
+            System.out.println("...");
+
+            TestSuite testSuite = parser.xmlStringToTestSuite(xmlContent);
+            testSuites.add(testSuite);
+        }
+
+        reportGenerator.generate(testSuites);
         logger.info(
                 "=> Sandboy Report: " + properties.getReportPath() + "/" +
                 Constants.START_PAGE + Constants.HTML_FILE_EXTENSION);

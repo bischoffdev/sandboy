@@ -20,7 +20,7 @@ class SandboyEngineTest {
     public void setup() {
         SandboyLogger logger = new SandboyLogger();
         PropertyManager properties = new PropertyManager(logger);
-        FileIO fileIO = new FileIO();
+        FileIO fileIO = new FileIO(logger);
         XmlParser parser = new XmlParser();
         ReportGenerator reportGenerator = new ReportGenerator(properties, fileIO);
         engine = new SandboyEngine(logger, properties, fileIO, parser, reportGenerator);
@@ -30,13 +30,18 @@ class SandboyEngineTest {
     void invocation() throws SandboyException {
         SandboyException exception = assertThrows(
                 SandboyException.class,
-                () -> engine.build("", "")
+                () -> engine.build("nonExistingPath", "")
         );
-        assertEquals("File  does not exist!", exception.getMessage());
+        assertEquals("Unable to find XML files in nonExistingPath!", exception.getMessage());
     }
 
     @Test
-    void invocationWithRealData() throws SandboyException {
+    void invocationWithRealDataSingleFile() throws SandboyException {
         engine.build("src/test/resources/example_report.xml", "target/sandboy");
+    }
+
+    @Test
+    void invocationWithRealDataFolder() throws SandboyException {
+        engine.build("src/test/resources", "target/sandboy");
     }
 }

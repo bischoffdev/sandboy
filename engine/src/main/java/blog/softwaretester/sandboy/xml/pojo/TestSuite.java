@@ -7,12 +7,16 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import java.util.List;
 
 @SuppressWarnings("unused")
-@JsonIgnoreProperties(value = {"noNamespaceSchemaLocation", "version"})
+@JsonIgnoreProperties(value = {
+        "noNamespaceSchemaLocation",
+        "version",
+})
 public class TestSuite {
     public List<Property> properties;
     @JacksonXmlElementWrapper(useWrapping = false)
     @JsonProperty("testcase")
     private List<Testcase> testcases;
+
     private String name;
     private double time;
     private int tests;
@@ -60,15 +64,15 @@ public class TestSuite {
     @Override
     public String toString() {
         return "TestSuite{" +
-                "properties=" + properties +
-                ", testcase=" + testcases +
-                ", name='" + name + '\'' +
-                ", time=" + time +
-                ", tests=" + tests +
-                ", errors=" + errors +
-                ", skipped=" + skipped +
-                ", failures=" + failures +
-                ", text='" + text + '\'' +
-                '}';
+               "properties=" + properties +
+               ", testcase=" + testcases +
+               ", name='" + name + '\'' +
+               ", time=" + time +
+               ", tests=" + tests +
+               ", errors=" + errors +
+               ", skipped=" + skipped +
+               ", failures=" + failures +
+               ", text='" + text + '\'' +
+               '}';
     }
 }

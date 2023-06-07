@@ -1,6 +1,7 @@
 package blog.softwaretester.sandboy.filesystem;
 
 import blog.softwaretester.sandboy.exceptions.SandboyException;
+import blog.softwaretester.sandboy.logger.SandboyLogger;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -9,14 +10,20 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static java.nio.file.Files.readAllBytes;
 
 @Singleton
 public class FileIO {
+    private final SandboyLogger logger;
+
     @Inject
-    public FileIO() {
+    public FileIO(final SandboyLogger logger) {
+        this.logger = logger;
     }
 
     public String readContentFromFile(final String filePath) throws SandboyException {
@@ -63,5 +70,20 @@ public class FileIO {
         } catch (IOException e) {
             throw new SandboyException("Cannot copy resource '" + source + "': " + e.getMessage());
         }
+    }
+
+    public List<Path> getXmlFilePaths(final String sourcePath) throws SandboyException {
+        List<Path> xmlPaths;
+        try (Stream<Path> walk = Files.walk(Paths.get(sourcePath))) {
+            xmlPaths =
+                    walk
+                            .filter(Files::isRegularFile)
+                            .filter(p -> p.toString().toLowerCase().endsWith(".xml"))
+                            .collect(Collectors.toList());
+
+        } catch (IOException e) {
+            throw new SandboyException("Unable to find XML files in " + sourcePath + "!");
+        }
+        return xmlPaths;
     }
 }

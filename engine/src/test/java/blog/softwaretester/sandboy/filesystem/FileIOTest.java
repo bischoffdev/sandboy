@@ -1,6 +1,7 @@
 package blog.softwaretester.sandboy.filesystem;
 
 import blog.softwaretester.sandboy.exceptions.SandboyException;
+import blog.softwaretester.sandboy.logger.SandboyLogger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +13,8 @@ class FileIOTest {
 
     @BeforeEach
     void setup() {
-        fileIO = new FileIO();
+        SandboyLogger logger = new SandboyLogger();
+        fileIO = new FileIO(logger);
     }
 
     @Test

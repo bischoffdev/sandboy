@@ -7,6 +7,7 @@ import blog.softwaretester.sandboy.xml.pojo.TestSuite;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+import java.util.List;
 
 @Singleton
 public class ReportGenerator {
@@ -19,9 +20,9 @@ public class ReportGenerator {
         this.fileIO = fileIO;
     }
 
-    public void generate(final TestSuite testSuite) throws SandboyException {
+    public void generate(final List<TestSuite> testSuites) throws SandboyException {
         createAssets();
-        
+
     }
 
     private void createAssets() throws SandboyException {
