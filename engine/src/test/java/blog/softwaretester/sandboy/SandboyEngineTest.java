@@ -5,6 +5,10 @@ import blog.softwaretester.sandboy.filesystem.FileIO;
 import blog.softwaretester.sandboy.logger.SandboyLogger;
 import blog.softwaretester.sandboy.properties.PropertyManager;
 import blog.softwaretester.sandboy.rendering.ReportGenerator;
+import blog.softwaretester.sandboy.rendering.visitors.HomepageVisitor;
+import blog.softwaretester.sandboy.rendering.visitors.VisitorDirectory;
+import blog.softwaretester.sandboy.templates.TemplateConfiguration;
+import blog.softwaretester.sandboy.templates.TemplateEngine;
 import blog.softwaretester.sandboy.xml.XmlParser;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,12 +26,15 @@ class SandboyEngineTest {
         PropertyManager properties = new PropertyManager(logger);
         FileIO fileIO = new FileIO(logger);
         XmlParser parser = new XmlParser();
-        ReportGenerator reportGenerator = new ReportGenerator(properties, fileIO);
+        TemplateEngine templateEngine = new TemplateEngine(new TemplateConfiguration());
+        HomepageVisitor homepageVisitor = new HomepageVisitor(fileIO, templateEngine, properties);
+        VisitorDirectory visitorDirectory = new VisitorDirectory(homepageVisitor);
+        ReportGenerator reportGenerator = new ReportGenerator(properties, fileIO, visitorDirectory);
         engine = new SandboyEngine(logger, properties, fileIO, parser, reportGenerator);
     }
 
     @Test
-    void invocation() throws SandboyException {
+    void invocation() {
         SandboyException exception = assertThrows(
                 SandboyException.class,
                 () -> engine.build("nonExistingPath", "")

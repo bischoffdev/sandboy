@@ -6,6 +6,7 @@ import blog.softwaretester.sandboy.logger.SandboyLogger;
 import blog.softwaretester.sandboy.properties.PropertyManager;
 import blog.softwaretester.sandboy.rendering.RenderingUtils;
 import blog.softwaretester.sandboy.rendering.ReportGenerator;
+import blog.softwaretester.sandboy.rendering.pages.pojos.collections.PageData;
 import blog.softwaretester.sandboy.settings.Constants;
 import blog.softwaretester.sandboy.xml.XmlParser;
 import blog.softwaretester.sandboy.xml.pojo.TestSuite;
@@ -51,20 +52,15 @@ public class SandboyEngine {
         properties.log();
 
         List<Path> xmlFilePaths = fileIO.getXmlFilePaths(surefireSourcePath);
-
         List<TestSuite> testSuites = new ArrayList<>();
         for (Path xmlFilePath : xmlFilePaths) {
             String xmlContent = fileIO.readContentFromFile(xmlFilePath.toString());
-
-            System.out.println("...");
-            System.out.println(xmlFilePath);
-            System.out.println("...");
-
             TestSuite testSuite = parser.xmlStringToTestSuite(xmlContent);
             testSuites.add(testSuite);
         }
+        PageData pageData = new PageData(testSuites);
 
-        reportGenerator.generate(testSuites);
+        reportGenerator.generate(pageData);
         logger.info(
                 "=> Sandboy Report: " + properties.getReportPath() + "/" +
                 Constants.START_PAGE + Constants.HTML_FILE_EXTENSION);
