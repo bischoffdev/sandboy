@@ -3,23 +3,23 @@ package blog.softwaretester.sandboy.rendering.visitors;
 import blog.softwaretester.sandboy.filesystem.FileIO;
 import blog.softwaretester.sandboy.properties.PropertyManager;
 import blog.softwaretester.sandboy.rendering.pages.pojos.collections.PageData;
-import blog.softwaretester.sandboy.templates.TemplateEngine;
+import blog.softwaretester.sandboy.templates.TemplateFactory;
 
 import javax.inject.Inject;
 
 public class TestDetailVisitor implements Visitor {
     private final FileIO fileIO;
-    private final TemplateEngine templateEngine;
+    private final TemplateFactory templateFactory;
     private final PropertyManager propertyManager;
 
     @Inject
     public TestDetailVisitor(
             final FileIO fileIO,
-            final TemplateEngine templateEngine,
+            final TemplateFactory templateFactory,
             final PropertyManager propertyManager
     ) {
         this.fileIO = fileIO;
-        this.templateEngine = templateEngine;
+        this.templateFactory = templateFactory;
         this.propertyManager = propertyManager;
     }
 

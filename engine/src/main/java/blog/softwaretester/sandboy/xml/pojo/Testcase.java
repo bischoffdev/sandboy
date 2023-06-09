@@ -74,19 +74,19 @@ public class Testcase {
     @Override
     public String toString() {
         return "Testcase{" +
-                "systemout='" + systemout + '\'' +
-                ", systemerr='" + systemerr + '\'' +
-                ", name='" + name + '\'' +
-                ", classname='" + classname + '\'' +
-                ", time=" + time +
-                ", text='" + text + '\'' +
-                ", failure='" + failure + '\'' +
-                ", rerunFailure='" + rerunFailure + '\'' +
-                ", flakyFailure='" + flakyFailure + '\'' +
-                ", rerunError='" + rerunError + '\'' +
-                ", flakyError='" + flakyError + '\'' +
-                ", skipped='" + skipped + '\'' +
-                ", error='" + error + '\'' +
-                '}';
+               "systemout='" + systemout + '\'' +
+               ", systemerr='" + systemerr + '\'' +
+               ", name='" + name + '\'' +
+               ", classname='" + classname + '\'' +
+               ", time=" + time +
+               ", text='" + text + '\'' +
+               ", failure='" + failure + '\'' +
+               ", rerunFailure='" + rerunFailure + '\'' +
+               ", flakyFailure='" + flakyFailure + '\'' +
+               ", rerunError='" + rerunError + '\'' +
+               ", flakyError='" + flakyError + '\'' +
+               ", skipped='" + skipped + '\'' +
+               ", error='" + error + '\'' +
+               '}';
     }
 }

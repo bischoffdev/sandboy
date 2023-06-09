@@ -16,6 +16,7 @@ public class HomepageVisitor implements Visitor {
 
     @Override
     public void visit(final PageData pageCollection) throws SandboyException {
-        pageGenerator.create("index.html", "CONTENT");
+
+        pageGenerator.create("index.html", "index", pageCollection);
     }
 }

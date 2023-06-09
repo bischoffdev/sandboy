@@ -8,19 +8,14 @@ import freemarker.template.TemplateExceptionHandler;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import static blog.softwaretester.sandboy.settings.Constants.TEMPLATE_FILE_EXTENSION;
-
 @Singleton
-public class TemplateConfiguration {
+public class TemplateFactory {
     private Configuration configuration;
 
     @Inject
-    public TemplateConfiguration() {
-    }
-
-    public void init(final String basePath) {
+    public TemplateFactory() {
         configuration = new Configuration(Configuration.VERSION_2_3_31);
-        configuration.setClassForTemplateLoading(this.getClass(), basePath);
+        configuration.setClassForTemplateLoading(this.getClass(), "/template");
         configuration.setDefaultEncoding("UTF-8");
         configuration.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
         configuration.setWhitespaceStripping(true);
@@ -30,7 +25,7 @@ public class TemplateConfiguration {
     public Template getTemplate(final String templateName) throws SandboyException {
         Template template;
         try {
-            template = configuration.getTemplate(templateName + TEMPLATE_FILE_EXTENSION);
+            template = configuration.getTemplate(templateName);
         } catch (Exception e) {
             throw new SandboyException("Template '" + templateName + "' was not found or not parsable: " +
                                        e.getMessage());

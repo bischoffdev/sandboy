@@ -61,6 +61,14 @@ public class TestSuite {
         return text;
     }
 
+    public int getErrorCount() {
+        return failures + errors;
+    }
+
+    public int getPassCount() {
+        return tests - getErrorCount();
+    }
+
     @Override
     public String toString() {
         return "TestSuite{" +
