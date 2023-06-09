@@ -43,10 +43,9 @@ public class FileIO {
     }
 
     public void copyResourceFromJar(final String resourceName, final String destination) throws SandboyException {
+        System.out.println("FROM " + resourceName + " to " + destination);
         final int BYTE_BLOCK = 4096;
         try (InputStream inputStream = this.getClass().getResourceAsStream(resourceName)) {
-            System.out.println(inputStream);
-
             int readBytes;
             byte[] buffer = new byte[BYTE_BLOCK];
             try (OutputStream outputStream = new FileOutputStream(destination)) {
@@ -85,5 +84,13 @@ public class FileIO {
             throw new SandboyException("Unable to find XML files in " + sourcePath + "!");
         }
         return xmlPaths;
+    }
+
+    public void writeToFile(final String filePath, final String content) throws SandboyException {
+        try (PrintStream ps = new PrintStream(filePath)) {
+            ps.println(content);
+        } catch (IOException e) {
+            throw new SandboyException("Could not create file " + filePath + ": " + e.getMessage());
+        }
     }
 }

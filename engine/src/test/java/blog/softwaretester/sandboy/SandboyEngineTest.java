@@ -4,6 +4,7 @@ import blog.softwaretester.sandboy.exceptions.SandboyException;
 import blog.softwaretester.sandboy.filesystem.FileIO;
 import blog.softwaretester.sandboy.logger.SandboyLogger;
 import blog.softwaretester.sandboy.properties.PropertyManager;
+import blog.softwaretester.sandboy.rendering.PageGenerator;
 import blog.softwaretester.sandboy.rendering.ReportGenerator;
 import blog.softwaretester.sandboy.rendering.visitors.HomepageVisitor;
 import blog.softwaretester.sandboy.rendering.visitors.VisitorDirectory;
@@ -27,7 +28,8 @@ class SandboyEngineTest {
         FileIO fileIO = new FileIO(logger);
         XmlParser parser = new XmlParser();
         TemplateEngine templateEngine = new TemplateEngine(new TemplateConfiguration());
-        HomepageVisitor homepageVisitor = new HomepageVisitor(fileIO, templateEngine, properties);
+        PageGenerator pageGenerator = new PageGenerator(fileIO, templateEngine, properties);
+        HomepageVisitor homepageVisitor = new HomepageVisitor(pageGenerator);
         VisitorDirectory visitorDirectory = new VisitorDirectory(homepageVisitor);
         ReportGenerator reportGenerator = new ReportGenerator(properties, fileIO, visitorDirectory);
         engine = new SandboyEngine(logger, properties, fileIO, parser, reportGenerator);

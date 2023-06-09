@@ -9,6 +9,7 @@ import blog.softwaretester.sandboy.rendering.visitors.VisitorDirectory;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+import java.io.File;
 
 @Singleton
 public class ReportGenerator {
@@ -39,11 +40,13 @@ public class ReportGenerator {
     private void createAssets() throws SandboyException {
         String rootPath = propertyManager.getReportPath();
         fileIO.createDirectory(rootPath);
-        fileIO.createDirectory(rootPath + "/css");
-        cp("/template/css/pico.classless.min.css", rootPath + "/css/pico.classless.min.css");
+        fileIO.createDirectory(rootPath + File.separator + "css");
+        copyTemplateResource("css/pico.classless.min.css");
     }
 
-    private void cp(final String resource, final String destination) throws SandboyException {
-        fileIO.copyResourceFromJar(resource, destination);
+    private void copyTemplateResource(final String resource) throws SandboyException {
+        String source = "/template" + File.separator + resource;
+        String destination = propertyManager.getReportPath() + File.separator + resource;
+        fileIO.copyResourceFromJar(source, destination);
     }
 }
