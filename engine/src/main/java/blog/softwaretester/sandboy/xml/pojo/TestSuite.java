@@ -9,10 +9,9 @@ import java.util.List;
 @SuppressWarnings("unused")
 @JsonIgnoreProperties(value = {
         "noNamespaceSchemaLocation",
-        "version",
+        "version", "properties"
 })
 public class TestSuite {
-    public List<Property> properties;
     @JacksonXmlElementWrapper(useWrapping = false)
     @JsonProperty("testcase")
     private List<Testcase> testcases;
@@ -24,10 +23,6 @@ public class TestSuite {
     private int skipped;
     private int failures;
     private String text;
-
-    public List<Property> getProperties() {
-        return properties;
-    }
 
     public List<Testcase> getTestcases() {
         return testcases;
@@ -67,20 +62,5 @@ public class TestSuite {
 
     public int getPassCount() {
         return tests - getErrorCount();
-    }
-
-    @Override
-    public String toString() {
-        return "TestSuite{" +
-               "properties=" + properties +
-               ", testcase=" + testcases +
-               ", name='" + name + '\'' +
-               ", time=" + time +
-               ", tests=" + tests +
-               ", errors=" + errors +
-               ", skipped=" + skipped +
-               ", failures=" + failures +
-               ", text='" + text + '\'' +
-               '}';
     }
 }

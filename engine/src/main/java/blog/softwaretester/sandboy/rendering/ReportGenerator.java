@@ -42,6 +42,7 @@ public class ReportGenerator {
         fileIO.createDirectory(rootPath);
         fileIO.createDirectory(rootPath + File.separator + "css");
         copyTemplateResource("css/pico.classless.min.css");
+        copyTemplateResource("css/override.css");
     }
 
     private void copyTemplateResource(final String resource) throws SandboyException {

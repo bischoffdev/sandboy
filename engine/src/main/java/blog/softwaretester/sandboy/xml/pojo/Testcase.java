@@ -70,23 +70,4 @@ public class Testcase {
     public String getError() {
         return error;
     }
-
-    @Override
-    public String toString() {
-        return "Testcase{" +
-               "systemout='" + systemout + '\'' +
-               ", systemerr='" + systemerr + '\'' +
-               ", name='" + name + '\'' +
-               ", classname='" + classname + '\'' +
-               ", time=" + time +
-               ", text='" + text + '\'' +
-               ", failure='" + failure + '\'' +
-               ", rerunFailure='" + rerunFailure + '\'' +
-               ", flakyFailure='" + flakyFailure + '\'' +
-               ", rerunError='" + rerunError + '\'' +
-               ", flakyError='" + flakyError + '\'' +
-               ", skipped='" + skipped + '\'' +
-               ", error='" + error + '\'' +
-               '}';
-    }
 }

@@ -45,7 +45,7 @@ class SandboyEngineTest {
 
     @Test
     void invocationWithRealDataSingleFile() throws SandboyException {
-        engine.build("src/test/resources/example_report.xml", "target/sandboy");
+        engine.build("src/test/resources/real.xml", "target/sandboy");
     }
 
     @Test

@@ -4,77 +4,35 @@
     <meta charset="UTF-8"/>
     <title>Sandboy Report</title>
     <link rel="stylesheet" href="css/pico.classless.min.css">
+    <link rel="stylesheet" href="css/override.css">
 </head>
 <body>
 <header>Sandboy Report</header>
 <main class="container">
-    <h1>Test Suites</h1>
+
     <#list testSuites as testSuite>
-        <h2>${testSuite.name}</h2>
-
-        <p>
-            ${testSuite.tests} tests:<br>
-            ${testSuite.passCount} passed / ${testSuite.errorCount} failed / ${testSuite.skipped} skipped
-        </p>
-
+        <h1>${testSuite.name}</h1>
+        <h2>Summary</h2>
         <ul>
-            <#list testSuite.testcases as testcase>
-                <li>
-                    <strong>${testcase.name}</strong><br>
-                    <i>(${testcase.classname})</i>
-                </li>
-            </#list>
+            <li>Passed: <strong>${testSuite.passCount}</strong></li>
+            <li>Skipped: <strong>${testSuite.skipped}</strong></li>
+            <li>Failed: <strong>${testSuite.errorCount}</strong></li>
+            <li>Time: <strong>${testSuite.time?c}</strong></li>
         </ul>
-    </#list>
 
-    <table>
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Heading</th>
-            <th scope="col">Heading</th>
-            <th scope="col">Heading</th>
-            <th scope="col">Heading</th>
-            <th scope="col">Heading</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Cell</td>
-            <td>Cell</td>
-            <td>Cell</td>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        <tr>
-            <th scope="row">1</th>
-            <td>Cell</td>
-            <td>Cell</td>
-            <td>Cell</td>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        <tr>
-            <th scope="row">1</th>
-            <td>Cell</td>
-            <td>Cell</td>
-            <td>Cell</td>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        </tbody>
-        <tfoot>
-        <tr>
-            <th scope="col">#</th>
-            <td scope="col">Total</td>
-            <td scope="col">Total</td>
-            <td scope="col">Total</td>
-            <td scope="col">Total</td>
-            <td scope="col">Total</td>
-        </tr>
-        </tfoot>
-    </table>
+        <h2>Test Cases</h2>
+        <#list testSuite.testcases as testcase>
+            <h3 data-tooltip="${testcase.classname}">${testcase.name}</h3>
+            <figure>
+                <table>
+                    <tr>
+                        <td>Time:</td>
+                        <td>${testcase.time?c}</td>
+                    </tr>
+                </table>
+            </figure>
+        </#list>
+    </#list>
 </main>
 <footer>Footer</footer>
 </body>
