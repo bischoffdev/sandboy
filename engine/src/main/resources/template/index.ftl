@@ -29,6 +29,46 @@
                         <td>Time:</td>
                         <td>${testcase.time?c}</td>
                     </tr>
+                    <tr>
+                        <td>Text:</td>
+                        <td>${testcase.text!""}</td>
+                    </tr>
+                    <tr>
+                        <td>Failure:</td>
+                        <td>${testcase.failure!""}</td>
+                    </tr>
+                    <tr>
+                        <td>Rerun Failure:</td>
+                        <td>${testcase.rerunFailure!""}</td>
+                    </tr>
+                    <tr>
+                        <td>Flaky Failure:</td>
+                        <td>${testcase.flakyFailure!""}</td>
+                    </tr>
+                    <tr>
+                        <td>Error:</td>
+                        <td>${testcase.error!""}</td>
+                    </tr>
+                    <tr>
+                        <td>Rerun Error:</td>
+                        <td>${testcase.rerunError!""}</td>
+                    </tr>
+                    <tr>
+                        <td>Flaky Error:</td>
+                        <td>${testcase.flakyError!""}</td>
+                    </tr>
+                    <tr>
+                        <td>Skipped:</td>
+                        <td>${testcase.skipped!""}</td>
+                    </tr>
+                    <tr>
+                        <td>System error:</td>
+                        <td>${testcase.systemError!""}</td>
+                    </tr>
+                    <tr>
+                        <td>System out:</td>
+                        <td>${testcase.systemOut!""}</td>
+                    </tr>
                 </table>
             </figure>
         </#list>

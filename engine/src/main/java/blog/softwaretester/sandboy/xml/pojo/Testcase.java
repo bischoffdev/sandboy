@@ -1,13 +1,14 @@
 package blog.softwaretester.sandboy.xml.pojo;
 
+import blog.softwaretester.sandboy.rendering.HtmlHelper;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Testcase {
     @JsonProperty("system-out")
-    private String systemout;
+    private String systemOut;
     @JsonProperty("system-err")
-    private String systemerr;
-    private String name;
+    private String systemError;
+    private String name = "";
     private String classname;
     private double time;
     private String text;
@@ -19,12 +20,12 @@ public class Testcase {
     private String skipped;
     private String error;
 
-    public String getSystemout() {
-        return systemout;
+    public String getSystemOut() {
+        return HtmlHelper.processForDisplay(systemOut);
     }
 
-    public String getSystemerr() {
-        return systemerr;
+    public String getSystemError() {
+        return HtmlHelper.processForDisplay(systemError);
     }
 
     public String getName() {
