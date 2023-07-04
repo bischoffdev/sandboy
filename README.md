@@ -1,3 +1,5 @@
+# Sandboy Surefire Reporting
+
 ![logo.png](doc/logo.png)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -9,8 +11,6 @@
         - [Report generation](#report-generation)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-# Sandboy Surefire Reporting
 
 ## Maven usage
 

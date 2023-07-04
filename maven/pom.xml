@@ -5,14 +5,105 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>blog.softwaretester</groupId>
-        <artifactId>sandboy</artifactId>
+        <groupId>blog.softwaretester.sandboy</groupId>
+        <artifactId>sandboy-parent</artifactId>
         <version>1.0.0</version>
     </parent>
 
-    <groupId>blog.softwaretester.sandboy</groupId>
     <artifactId>sandboy-maven</artifactId>
     <version>1.0.0</version>
 
+    <name>Sandboy Maven</name>
+    <description>The Sandboy Maven plugin.</description>
 
+    <properties>
+        <maven.compiler.release>11</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <maven-artifact.version>3.9.3</maven-artifact.version>
+        <maven-model.version>3.9.3</maven-model.version>
+        <maven-plugin-annotations.version>3.9.0</maven-plugin-annotations.version>
+        <maven-plugin-api.version>3.9.3</maven-plugin-api.version>
+        <javax.inject.version>1</javax.inject.version>
+        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+        <maven-plugin-plugin.version>3.9.0</maven-plugin-plugin.version>
+        <properties-maven-plugin.version>1.1.0</properties-maven-plugin.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>blog.softwaretester.sandboy</groupId>
+            <artifactId>sandboy-engine</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>${javax.inject.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-plugin-api</artifactId>
+            <version>${maven-plugin-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugin-tools</groupId>
+            <artifactId>maven-plugin-annotations</artifactId>
+            <version>${maven-plugin-annotations.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-model</artifactId>
+            <version>${maven-model.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-artifact</artifactId>
+            <version>${maven-artifact.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-plugin-plugin</artifactId>
+                <version>${maven-plugin-plugin.version}</version>
+                <configuration>
+                    <goalPrefix>sandboy</goalPrefix>
+                    <skipErrorNoDescriptorsFound>false</skipErrorNoDescriptorsFound>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>mojo-descriptor</id>
+                        <goals>
+                            <goal>descriptor</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>help-descriptor</id>
+                        <goals>
+                            <goal>helpmojo</goal>
+                        </goals>
+                        <phase>process-classes</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
