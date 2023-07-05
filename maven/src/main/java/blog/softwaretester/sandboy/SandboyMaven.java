@@ -17,7 +17,6 @@ public class SandboyMaven extends AbstractMojo {
 
     @Override
     public void execute() throws MojoExecutionException {
-        System.out.println("Bomboclaat");
         try {
             SandboyEngine sandboyEngine = DaggerSandboyCoreGraph.create().getSandboyEngine();
             sandboyEngine.build(surefireSourcePath, generatedReportPath);
