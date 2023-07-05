@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/override.css">
 </head>
 <body>
-<header>Sandboy Report</header>
+<header>Sandboy Report ${version}</header>
 <main class="container">
 
     <#list testSuites as testSuite>
