@@ -4,7 +4,7 @@ import blog.softwaretester.sandboy.rendering.HtmlHelper;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Testcase {
-    private final String name = "";
+    private String name = "";
     @JsonProperty("system-out")
     private String systemOut;
     @JsonProperty("system-err")

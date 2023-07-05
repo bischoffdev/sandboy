@@ -55,14 +55,19 @@ public class SandboyEngine {
         List<TestSuite> testSuites = new ArrayList<>();
         for (Path xmlFilePath : xmlFilePaths) {
             String xmlContent = fileIO.readContentFromFile(xmlFilePath.toString());
-            TestSuite testSuite = parser.xmlStringToTestSuite(xmlContent);
-            testSuites.add(testSuite);
+            try {
+                TestSuite testSuite = parser.xmlStringToTestSuite(xmlContent);
+                logger.info("Processed '" + xmlFilePath + "'.");
+                testSuites.add(testSuite);
+            } catch (SandboyException e) {
+                logger.info("Tried to process '" + xmlFilePath + "' but it does not seem to be a Surefire report file.");
+            }
         }
         PageData pageData = new PageData(testSuites);
 
         reportGenerator.generate(pageData);
         logger.info(
                 "=> Sandboy Report: " + properties.getReportPath() + "/" +
-                Constants.START_PAGE + Constants.HTML_FILE_EXTENSION);
+                        Constants.START_PAGE + Constants.HTML_FILE_EXTENSION);
     }
 }

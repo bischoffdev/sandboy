@@ -35,12 +35,11 @@ public class FileIO {
     public void createDirectory(final String dirName) throws SandboyException {
         File directory = new File(dirName);
         if (!directory.exists() && !directory.mkdirs()) {
-            throw new SandboyException("Could not create directory " + dirName + ".");
+            throw new SandboyException("Could not create directory '" + dirName + "'.");
         }
     }
 
     public void copyResourceFromJar(final String resourceName, final String destination) throws SandboyException {
-        System.out.println("FROM " + resourceName + " to " + destination);
         final int BYTE_BLOCK = 4096;
         try (InputStream inputStream = this.getClass().getResourceAsStream(resourceName)) {
             int readBytes;
@@ -71,13 +70,10 @@ public class FileIO {
     public List<Path> getXmlFilePaths(final String sourcePath) throws SandboyException {
         List<Path> xmlPaths;
         try (Stream<Path> walk = Files.walk(Paths.get(sourcePath))) {
-            xmlPaths =
-                    walk
-                            .filter(Files::isRegularFile)
-                            .filter(p -> p.toString().toLowerCase().endsWith(".xml"))
-                            .collect(Collectors.toList());
-
-        } catch (IOException e) {
+            xmlPaths = walk.filter(Files::isRegularFile)
+                    .filter(p -> p.toString().toLowerCase().endsWith(".xml"))
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
             throw new SandboyException("Unable to find XML files in " + sourcePath + "!");
         }
         return xmlPaths;

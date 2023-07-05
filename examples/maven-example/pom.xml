@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>blog.bischoffdev.sandboy</groupId>
+    <artifactId>maven-example</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>blog.softwaretester.sandboy</groupId>
+                <artifactId>sandboy-maven</artifactId>
+                <version>${project.version}</version>
+                <executions>
+                    <execution>
+                        <id>Generate_Report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <surefireSourcePath>${project.basedir}/surefire</surefireSourcePath>
+                    <generatedReportPath>${project.build.directory}/sandboy-report</generatedReportPath>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

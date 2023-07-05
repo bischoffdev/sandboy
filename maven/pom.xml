@@ -13,6 +13,8 @@
     <artifactId>sandboy-maven</artifactId>
     <version>1.0.0</version>
 
+    <packaging>maven-plugin</packaging>
+
     <name>Sandboy Maven</name>
     <description>The Sandboy Maven plugin.</description>
 

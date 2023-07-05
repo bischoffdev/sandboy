@@ -52,4 +52,13 @@ class SandboyEngineTest {
     void invocationWithRealDataFolder() throws SandboyException {
         engine.build("src/test/resources", "target/sandboy");
     }
+
+    @Test
+    void invocationWithEmptyFolders() throws SandboyException {
+        SandboyException exception = assertThrows(
+                SandboyException.class,
+                () -> engine.build("", "")
+        );
+        assertEquals("Could not create directory ''.", exception.getMessage());
+    }
 }

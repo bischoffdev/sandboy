@@ -30,9 +30,7 @@ public class ReportGenerator {
 
     public void generate(final PageData pageData) throws SandboyException {
         createAssets();
-
         for (Visitor visitor : visitorDirectory.getVisitors()) {
-            System.out.println("Visitor " + visitor);
             pageData.accept(visitor);
         }
     }
