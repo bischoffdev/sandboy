@@ -1,10 +1,11 @@
 package blog.softwaretester.sandboy.xml.pojo;
 
 import blog.softwaretester.sandboy.rendering.HtmlHelper;
+import blog.softwaretester.sandboy.xml.Status;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Testcase {
-    private String name = "";
+    private String name;
     @JsonProperty("system-out")
     private String systemOut;
     @JsonProperty("system-err")
@@ -70,5 +71,20 @@ public class Testcase {
 
     public String getError() {
         return error;
+    }
+
+    public String getSkippedString() {
+        return skipped;
+    }
+
+    public String getErrorString() {
+        return "";
+    }
+
+    public Status getStatus() {
+        if (!getSkipped().isEmpty()) {
+            return Status.SKIPPED;
+        }
+        return Status.UNKNOWN;
     }
 }

@@ -3,6 +3,10 @@
     --primary: #546e7a;
 }
 
-header {
-    border-bottom: 1px black solid;
+h1 {
+    --typography-spacing-vertical: 0;
+}
+
+td, th {
+    vertical-align: top;
 }

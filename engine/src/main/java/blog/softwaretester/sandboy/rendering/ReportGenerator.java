@@ -39,7 +39,7 @@ public class ReportGenerator {
         String rootPath = propertyManager.getReportPath();
         fileIO.createDirectory(rootPath);
         fileIO.createDirectory(rootPath + File.separator + "css");
-        copyTemplateResource("css/pico.classless.min.css");
+        copyTemplateResource("css/pico.min.css");
         copyTemplateResource("css/override.css");
     }
 

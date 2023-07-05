@@ -58,10 +58,10 @@ public class SandboyEngine {
             String xmlContent = fileIO.readContentFromFile(xmlFilePath.toString());
             try {
                 TestSuite testSuite = parser.xmlStringToTestSuite(xmlContent);
-                logger.info("Processed '" + xmlFilePath + "'.");
+                logger.info("...Processed '" + xmlFilePath + "'.");
                 testSuites.add(testSuite);
             } catch (SandboyException e) {
-                logger.info("Tried to process '" + xmlFilePath + "' but it does not seem to be a Surefire report file.");
+                logger.info("...Tried to process '" + xmlFilePath + "' but it is not a valid Surefire report file.");
             }
         }
         PageData pageData = new PageData(testSuites);
