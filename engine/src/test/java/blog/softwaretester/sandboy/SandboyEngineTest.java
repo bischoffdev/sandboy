@@ -24,7 +24,7 @@ class SandboyEngineTest {
     public void setup() {
         SandboyLogger logger = new SandboyLogger();
         PropertyManager properties = new PropertyManager(logger);
-        FileIO fileIO = new FileIO(logger);
+        FileIO fileIO = new FileIO();
         XmlParser parser = new XmlParser();
         TemplateFactory templateFactory = new TemplateFactory();
         PageGenerator pageGenerator = new PageGenerator(fileIO, templateFactory, properties);

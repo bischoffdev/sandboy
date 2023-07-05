@@ -4,11 +4,11 @@ import blog.softwaretester.sandboy.rendering.HtmlHelper;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Testcase {
+    private final String name = "";
     @JsonProperty("system-out")
     private String systemOut;
     @JsonProperty("system-err")
     private String systemError;
-    private String name = "";
     private String classname;
     private double time;
     private String text;

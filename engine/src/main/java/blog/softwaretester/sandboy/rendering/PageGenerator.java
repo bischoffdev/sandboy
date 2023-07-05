@@ -33,20 +33,18 @@ public class PageGenerator {
 
     public void create(final String pagePath, final String templateName, final PageData pageData) throws SandboyException {
         Template template = templateFactory.getTemplate(templateName + TEMPLATE_FILE_EXTENSION);
-        String renderedContent = "";
         try (StringWriter writer = new StringWriter()) {
             template.process(pageData, writer);
-            renderedContent = writer.toString();
+            fileIO.writeToFile(
+                    propertyManager.getReportPath().replace("/", File.separator) + File.separator +
+                            pagePath, writer.toString()
+            );
         } catch (TemplateException | IOException e) {
             throw new SandboyException(
                     "Could not render content with template " +
-                    templateName + " for page " + pagePath + ": " +
-                    e.getMessage()
+                            templateName + " for page " + pagePath + ": " +
+                            e.getMessage()
             );
         }
-        fileIO.writeToFile(
-                propertyManager.getReportPath().replace("/", File.separator) + File.separator +
-                pagePath, renderedContent
-        );
     }
 }

@@ -10,7 +10,7 @@ import javax.inject.Singleton;
 
 @Singleton
 public class TemplateFactory {
-    private Configuration configuration;
+    private final Configuration configuration;
 
     @Inject
     public TemplateFactory() {
@@ -28,7 +28,7 @@ public class TemplateFactory {
             template = configuration.getTemplate(templateName);
         } catch (Exception e) {
             throw new SandboyException("Template '" + templateName + "' was not found or not parsable: " +
-                                       e.getMessage());
+                    e.getMessage());
         }
         return template;
     }

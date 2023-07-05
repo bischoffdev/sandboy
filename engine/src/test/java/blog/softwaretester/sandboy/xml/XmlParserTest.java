@@ -2,7 +2,6 @@ package blog.softwaretester.sandboy.xml;
 
 import blog.softwaretester.sandboy.exceptions.SandboyException;
 import blog.softwaretester.sandboy.filesystem.FileIO;
-import blog.softwaretester.sandboy.logger.SandboyLogger;
 import blog.softwaretester.sandboy.xml.pojo.TestSuite;
 import blog.softwaretester.sandboy.xml.pojo.Testcase;
 import org.junit.jupiter.api.BeforeEach;
@@ -29,8 +28,7 @@ class XmlParserTest {
 
     @Test
     void parseValidFullXML() throws SandboyException {
-        SandboyLogger logger = new SandboyLogger();
-        String xml = new FileIO(logger).readContentFromFile("src/test/resources/example_report.xml");
+        String xml = new FileIO().readContentFromFile("src/test/resources/example_report.xml");
         TestSuite testSuite = parser.xmlStringToTestSuite(xml);
         assertEquals("My Test Suite", testSuite.getName());
         List<Testcase> testcases = testSuite.getTestcases();
@@ -47,6 +45,6 @@ class XmlParserTest {
                 () -> parser.xmlStringToTestSuite(xml)
         );
         assertEquals("Could not map XML: Unexpected EOF in prolog\n" +
-                     " at [row,col {unknown-source}]: [1,38]", exception.getMessage());
+                " at [row,col {unknown-source}]: [1,38]", exception.getMessage());
     }
 }

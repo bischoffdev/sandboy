@@ -1,7 +1,6 @@
 package blog.softwaretester.sandboy.filesystem;
 
 import blog.softwaretester.sandboy.exceptions.SandboyException;
-import blog.softwaretester.sandboy.logger.SandboyLogger;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -19,11 +18,9 @@ import static java.nio.file.Files.readAllBytes;
 
 @Singleton
 public class FileIO {
-    private final SandboyLogger logger;
 
     @Inject
-    public FileIO(final SandboyLogger logger) {
-        this.logger = logger;
+    public FileIO() {
     }
 
     public String readContentFromFile(final String filePath) throws SandboyException {
