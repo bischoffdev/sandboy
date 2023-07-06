@@ -3,9 +3,7 @@ package blog.softwaretester.sandboy.xml;
 public enum Status {
     PASSED("passed"),
     FAILED("failed"),
-    SKIPPED("skipped"),
-    UNKNOWN("unknown");
-
+    SKIPPED("skipped");
     private final String name;
 
     Status(final String name) {

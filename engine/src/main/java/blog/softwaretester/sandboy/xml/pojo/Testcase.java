@@ -21,6 +21,9 @@ public class Testcase {
     private String skipped;
     private String error;
 
+    private String combinedErrorText;
+    private String combinedOutputText;
+
     public String getName() {
         return name;
     }
@@ -38,27 +41,35 @@ public class Testcase {
     }
 
     public String getErrorText() {
+        if (combinedErrorText != null) {
+            return combinedErrorText;
+        }
         StringBuilder textBuilder = new StringBuilder();
-        appendIfExists(textBuilder, systemError);
         appendIfExists(textBuilder, error);
         appendIfExists(textBuilder, failure);
         appendIfExists(textBuilder, flakyError);
         appendIfExists(textBuilder, flakyFailure);
         appendIfExists(textBuilder, rerunError);
         appendIfExists(textBuilder, rerunFailure);
-        return HtmlHelper.processForDisplay(textBuilder.toString());
+        combinedErrorText = HtmlHelper.processForDisplay(textBuilder.toString());
+        return combinedErrorText;
     }
 
     /**
-     * Combines systemOut and text properties into one.
+     * Combines systemOut, systemError and text properties into one.
      *
      * @return The combined text
      */
     public String getOutputText() {
+        if (combinedOutputText != null) {
+            return combinedOutputText;
+        }
         StringBuilder textBuilder = new StringBuilder();
         appendIfExists(textBuilder, systemOut);
+        appendIfExists(textBuilder, systemError);
         appendIfExists(textBuilder, text);
-        return HtmlHelper.processForDisplay(textBuilder.toString());
+        combinedOutputText = HtmlHelper.processForDisplay(textBuilder.toString());
+        return combinedOutputText;
     }
 
     private void appendIfExists(final StringBuilder textBuilder, final String testToAppend) {
@@ -68,9 +79,13 @@ public class Testcase {
     }
 
     public Status getStatus() {
-        if (!skipped.isBlank()) {
+        String errorText = getErrorText();
+        if (errorText != null && !errorText.isBlank()) {
+            return Status.FAILED;
+        } else if (skipped != null && !skipped.isBlank()) {
             return Status.SKIPPED;
+        } else {
+            return Status.PASSED;
         }
-        return Status.UNKNOWN;
     }
 }
