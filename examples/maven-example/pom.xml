@@ -25,7 +25,7 @@
                 <executions>
                     <execution>
                         <id>Generate_Report</id>
-                        <phase>test</phase>
+                        <phase>none</phase>
                         <goals>
                             <goal>report</goal>
                         </goals>
