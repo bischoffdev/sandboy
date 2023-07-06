@@ -10,10 +10,31 @@ footer {
     text-align: center;
 }
 
-h1 {
+h1, h2, h3, h4, h5, h6 {
     --typography-spacing-vertical: 0;
+    --font-weight: 500;
+}
+
+table[role=grid] {
+    border-collapse: initial;
+    border: gray 1px solid;
 }
 
 td, th {
     vertical-align: top;
+}
+
+article.passed header {
+    border: #438fcd 2px solid;
+    background-color: #438fcd30;
+}
+
+article.failed header {
+    border: #d14d45 2px solid;
+    background-color: #d14d4530;
+}
+
+article.skipped header {
+    border: #efa23e 2px solid;
+    background-color: #efa23e30;
 }

@@ -13,24 +13,24 @@
     <#list testSuites as testSuite>
         <article>
             <header>
-                <h4>Test Suite: ${testSuite.name}</h4>
+                <h4>${testSuite.name}</h4>
                 Passed: ${testSuite.passCount} / Failed: ${testSuite.errorCount} / Skipped: ${testSuite.skipped} /
                 Test Suite Time: ${testSuite.time?c} seconds
             </header>
 
-            <article>
+            <article class="failed">
                 <header>Failed</header>
                 <#list testSuite.getFailedTestcases() as testcase>
                     <@testcasesMacro.details testcase />
                 </#list>
             </article>
-            <article>
+            <article class="passed">
                 <header>Passed</header>
                 <#list testSuite.getPassedTestcases() as testcase>
                     <@testcasesMacro.details testcase />
                 </#list>
             </article>
-            <article>
+            <article class="skipped">
                 <header>Skipped</header>
                 <#list testSuite.getSkippedTestcases() as testcase>
                     <@testcasesMacro.details testcase />
