@@ -14,28 +14,34 @@
         <article>
             <header>
                 <h4>${testSuite.name}</h4>
-                Passed: ${testSuite.passCount} / Failed: ${testSuite.errorCount} / Skipped: ${testSuite.skipped} /
-                Test Suite Time: ${testSuite.time?c} seconds
+                <i>Passed: ${testSuite.passCount} | Failed: ${testSuite.errorCount} | Skipped: ${testSuite.skipped} |
+                    Test Suite Time: ${testSuite.time?c} seconds</i>
             </header>
 
-            <article class="failed">
-                <header>Failed</header>
-                <#list testSuite.getFailedTestcases() as testcase>
-                    <@testcasesMacro.details testcase />
-                </#list>
-            </article>
-            <article class="passed">
-                <header>Passed</header>
-                <#list testSuite.getPassedTestcases() as testcase>
-                    <@testcasesMacro.details testcase />
-                </#list>
-            </article>
-            <article class="skipped">
-                <header>Skipped</header>
-                <#list testSuite.getSkippedTestcases() as testcase>
-                    <@testcasesMacro.details testcase />
-                </#list>
-            </article>
+            <#if testSuite.getNumberOfFailedTestcases() gt 0 >
+                <article class="failed">
+                    <header><strong>Failed</strong> - ${testSuite.getNumberOfFailedTestcases()} Test Case(s)</header>
+                    <#list testSuite.getFailedTestcases() as testcase>
+                        <@testcasesMacro.details testcase />
+                    </#list>
+                </article>
+            </#if>
+            <#if testSuite.getNumberOfPassedTestcases() gt 0>
+                <article class="passed">
+                    <header><strong>Passed</strong> - ${testSuite.getNumberOfPassedTestcases()} Test Case(s)</header>
+                    <#list testSuite.getPassedTestcases() as testcase>
+                        <@testcasesMacro.details testcase />
+                    </#list>
+                </article>
+            </#if>
+            <#if testSuite.getNumberOfSkippedTestcases() gt 0>
+                <article class="skipped">
+                    <header><strong>Skipped</strong> - ${testSuite.getNumberOfSkippedTestcases()} Test Case(s)</header>
+                    <#list testSuite.getSkippedTestcases() as testcase>
+                        <@testcasesMacro.details testcase />
+                    </#list>
+                </article>
+            </#if>
         </article>
     </#list>
 </main>

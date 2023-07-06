@@ -1,5 +1,6 @@
 :root {
-    --spacing: 0.5rem;
+    --spacing: 0.4rem;
+    --accordion-active-summary-color: #233dbb;
 }
 
 article {

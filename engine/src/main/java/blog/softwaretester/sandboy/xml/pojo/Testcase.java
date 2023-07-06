@@ -41,17 +41,16 @@ public class Testcase {
     }
 
     public String getErrorText() {
-        if (combinedErrorText != null) {
-            return combinedErrorText;
+        if (combinedErrorText == null) {
+            StringBuilder textBuilder = new StringBuilder();
+            appendIfExists(textBuilder, error);
+            appendIfExists(textBuilder, failure);
+            appendIfExists(textBuilder, flakyError);
+            appendIfExists(textBuilder, flakyFailure);
+            appendIfExists(textBuilder, rerunError);
+            appendIfExists(textBuilder, rerunFailure);
+            combinedErrorText = HtmlHelper.processForDisplay(textBuilder.toString());
         }
-        StringBuilder textBuilder = new StringBuilder();
-        appendIfExists(textBuilder, error);
-        appendIfExists(textBuilder, failure);
-        appendIfExists(textBuilder, flakyError);
-        appendIfExists(textBuilder, flakyFailure);
-        appendIfExists(textBuilder, rerunError);
-        appendIfExists(textBuilder, rerunFailure);
-        combinedErrorText = HtmlHelper.processForDisplay(textBuilder.toString());
         return combinedErrorText;
     }
 
@@ -61,14 +60,13 @@ public class Testcase {
      * @return The combined text
      */
     public String getOutputText() {
-        if (combinedOutputText != null) {
-            return combinedOutputText;
+        if (combinedOutputText == null) {
+            StringBuilder textBuilder = new StringBuilder();
+            appendIfExists(textBuilder, systemOut);
+            appendIfExists(textBuilder, systemError);
+            appendIfExists(textBuilder, text);
+            combinedOutputText = HtmlHelper.processForDisplay(textBuilder.toString());
         }
-        StringBuilder textBuilder = new StringBuilder();
-        appendIfExists(textBuilder, systemOut);
-        appendIfExists(textBuilder, systemError);
-        appendIfExists(textBuilder, text);
-        combinedOutputText = HtmlHelper.processForDisplay(textBuilder.toString());
         return combinedOutputText;
     }
 

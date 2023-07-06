@@ -17,6 +17,9 @@ public class TestSuite {
     @JacksonXmlElementWrapper(useWrapping = false)
     @JsonProperty("testcase")
     private List<Testcase> testcases;
+    private List<Testcase> failedTestcases;
+    private List<Testcase> passedTestcases;
+    private List<Testcase> skippedTestcases;
 
     private String name;
     private double time;
@@ -31,28 +34,30 @@ public class TestSuite {
     }
 
     public List<Testcase> getPassedTestcases() {
-        return testcases.stream()
-                .filter(testcase -> testcase.getStatus() == Status.PASSED)
-                .collect(Collectors.toList());
+        if (passedTestcases == null) {
+            passedTestcases = testcases.stream()
+                    .filter(testcase -> testcase.getStatus() == Status.PASSED)
+                    .collect(Collectors.toList());
+        }
+        return passedTestcases;
     }
 
     public List<Testcase> getFailedTestcases() {
-        try {
-            List<Testcase> cases = testcases.stream()
+        if (failedTestcases == null) {
+            failedTestcases = testcases.stream()
                     .filter(testcase -> testcase.getStatus() == Status.FAILED)
                     .collect(Collectors.toList());
-            System.out.println(cases);
-            return cases;
-        } catch (Exception e) {
-            System.out.println("WHAT? " + e);
         }
-        return null;
+        return failedTestcases;
     }
 
     public List<Testcase> getSkippedTestcases() {
-        return testcases.stream()
-                .filter(testcase -> testcase.getStatus() == Status.SKIPPED)
-                .collect(Collectors.toList());
+        if (skippedTestcases == null) {
+            skippedTestcases = testcases.stream()
+                    .filter(testcase -> testcase.getStatus() == Status.SKIPPED)
+                    .collect(Collectors.toList());
+        }
+        return skippedTestcases;
     }
 
     public String getName() {
@@ -89,5 +94,21 @@ public class TestSuite {
 
     public int getPassCount() {
         return tests - getErrorCount();
+    }
+
+    public int getNumberOfTestcases() {
+        return testcases.size();
+    }
+
+    public int getNumberOfPassedTestcases() {
+        return getPassedTestcases().size();
+    }
+
+    public int getNumberOfFailedTestcases() {
+        return getFailedTestcases().size();
+    }
+
+    public int getNumberOfSkippedTestcases() {
+        return getSkippedTestcases().size();
     }
 }
