@@ -6,7 +6,10 @@ public class HtmlHelper {
             return "";
         }
         return text
-                .replaceAll("\n", "<br>")
-                .replaceAll(" ", "&nbsp;");
+                .replaceAll("&", "&amp;")
+                .replaceAll("<", "&lt;")
+                .replaceAll(">", "&gt;")
+                .replaceAll(" ", "&nbsp;")
+                .replaceAll("\n", "<br>");
     }
 }

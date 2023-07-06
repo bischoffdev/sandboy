@@ -8,108 +8,56 @@
 </head>
 <body>
 <main class="container-fluid">
-    <nav>
-        <h1>Sandboy Report</h1>
-    </nav>
     <#list testSuites as testSuite>
         <article>
             <header>
-                <h4>${testSuite.name}</h4>
-                <article style="width: 50%; padding: 0;">
-                    <table role="grid" style="table-layout: fixed">
-                        <tr>
-                            <td>Passed</td>
-                            <td>${testSuite.passCount}</td>
-                        </tr>
-                        <tr>
-                            <td>Failed</td>
-                            <td>${testSuite.errorCount}</td>
-                        </tr>
-                        <tr>
-                            <td>Skipped</td>
-                            <td>${testSuite.skipped}</td>
-                        </tr>
-                        <tr>
-                            <td>Test Suite Time</td>
-                            <td>${testSuite.time?c} seconds</td>
-                        </tr>
-                    </table>
-                </article>
+                <h4>Test Suite: ${testSuite.name}</h4>
+                Passed: ${testSuite.passCount} / Failed: ${testSuite.errorCount} / Skipped: ${testSuite.skipped} /
+                Test Suite Time: ${testSuite.time?c} seconds
             </header>
 
-            <#list testSuite.testcases as testcase>
-                <details>
-                    <summary>${testcase.name}</summary>
-                    <figure>
-                        <table role="grid">
-                            <tr>
-                                <td>Time:</td>
-                                <td>${testcase.time?c}</td>
-                            </tr>
-                            <tr>
-                                <td>Text:</td>
-                                <td>
-                                    <pre>${testcase.text!""}</pre>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Failure:</td>
-                                <td>
-                                    <pre>${testcase.failure!""}</pre>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Rerun Failure:</td>
-                                <td>
-                                    <pre>${testcase.rerunFailure!""}</pre>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Flaky Failure:</td>
-                                <td>
-                                    <pre>${testcase.flakyFailure!""}</pre>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Error:</td>
-                                <td>
-                                    <pre>${testcase.error!""}</pre>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Rerun Error:</td>
-                                <td>
-                                    <pre>${testcase.rerunError!""}</pre>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Flaky Error:</td>
-                                <td>
-                                    <pre>${testcase.flakyError!""}</pre>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Skipped:</td>
-                                <td>
-                                    <pre>${testcase.skipped!""}</pre>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>System error:</td>
-                                <td>
-                                    <pre>${testcase.systemError!""}</pre>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>System out:</td>
-                                <td>
-                                    <pre>${testcase.systemOut!""}</pre>
-                                </td>
-                            </tr>
-                        </table>
-                    </figure>
-                </details>
-            </#list>
+            <article>
+                <header>Failed</header>
+                <#list testSuite.testcases as testcase>
+                    <details>
+                        <summary>${testcase.name}</summary>
+                        <figure>
+                            <table role="grid">
+                                <tr>
+                                    <td>Time:</td>
+                                    <td>${testcase.time?c} seconds</td>
+                                </tr>
+                                <tr>
+                                    <td>Text:</td>
+                                    <td>
+                                        <pre><code>${testcase.getOutputText()!""}</code></pre>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Error:</td>
+                                    <td>
+                                        <pre><code>${testcase.getErrorText()!""}</code></pre>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Skipped:</td>
+                                    <td>
+                                        <pre><code>${testcase.skipped!""}</code></pre>
+                                    </td>
+                                </tr>
+                            </table>
+                        </figure>
+                    </details>
+                </#list>
+            </article>
+            <article>
+                <header>Skipped</header>
+                blabla
+            </article>
+            <article>
+                <header>Failed</header>
+                blabla
+            </article>
         </article>
     </#list>
 </main>

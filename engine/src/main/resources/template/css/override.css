@@ -3,6 +3,14 @@
     --primary: #546e7a;
 }
 
+article {
+    margin: 0;
+}
+
+footer {
+    text-align: center;
+}
+
 h1 {
     --typography-spacing-vertical: 0;
 }

@@ -21,14 +21,6 @@ public class Testcase {
     private String skipped;
     private String error;
 
-    public String getSystemOut() {
-        return HtmlHelper.processForDisplay(systemOut);
-    }
-
-    public String getSystemError() {
-        return HtmlHelper.processForDisplay(systemError);
-    }
-
     public String getName() {
         return name;
     }
@@ -41,48 +33,42 @@ public class Testcase {
         return time;
     }
 
-    public String getText() {
-        return text;
-    }
-
-    public String getFailure() {
-        return failure;
-    }
-
-    public String getRerunFailure() {
-        return rerunFailure;
-    }
-
-    public String getFlakyFailure() {
-        return flakyFailure;
-    }
-
-    public String getRerunError() {
-        return rerunError;
-    }
-
-    public String getFlakyError() {
-        return flakyError;
-    }
-
-    public String getSkipped() {
+    public String getSkippedText() {
         return skipped;
     }
 
-    public String getError() {
-        return error;
+    public String getErrorText() {
+        StringBuilder textBuilder = new StringBuilder();
+        appendIfExists(textBuilder, systemError);
+        appendIfExists(textBuilder, error);
+        appendIfExists(textBuilder, failure);
+        appendIfExists(textBuilder, flakyError);
+        appendIfExists(textBuilder, flakyFailure);
+        appendIfExists(textBuilder, rerunError);
+        appendIfExists(textBuilder, rerunFailure);
+        return HtmlHelper.processForDisplay(textBuilder.toString());
     }
 
-    public String getSkippedString() {
-        return skipped;
+    /**
+     * Combines systemOut and text properties into one.
+     *
+     * @return The combined text
+     */
+    public String getOutputText() {
+        StringBuilder textBuilder = new StringBuilder();
+        appendIfExists(textBuilder, systemOut);
+        appendIfExists(textBuilder, text);
+        return HtmlHelper.processForDisplay(textBuilder.toString());
     }
 
-    public String getErrorString() {
-        return "";
+    private void appendIfExists(final StringBuilder textBuilder, final String testToAppend) {
+        if (testToAppend != null && !testToAppend.isBlank()) {
+            textBuilder.append(testToAppend);
+        }
     }
 
     public Status getStatus() {
-        if (!getSkipped().isEmpty()) {
+        if (!skipped.isBlank()) {
             return Status.SKIPPED;
         }
         return Status.UNKNOWN;
