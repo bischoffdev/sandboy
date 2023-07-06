@@ -1,18 +1,22 @@
 # Sandboy Surefire Reporting
 
+_Clear and concise Surefire reporting!_
+
 ![logo.png](doc/logo.png)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [Sandboy Surefire Reporting](#sandboy-surefire-reporting)
-    - [Maven usage](#maven-usage)
-        - [Dependency](#dependency)
-        - [Report generation](#report-generation)
+- [Maven usage](#maven-usage)
+  - [Plugin dependency](#plugin-dependency)
+  - [Report generation](#report-generation)
+    - [surefireSourcePath](#surefiresourcepath)
+    - [generatedReportPath](#generatedreportpath)
+- [Sample Report](#sample-report)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-Sandboy is an alternative report generator for Surefire XML files. These are generated
+Sandboy is a very clear and concise alternative report generator for Surefire XML files. These are generated
 by [Maven Surefire](https://maven.apache.org/surefire/maven-surefire-plugin/)
 and [Maven Failsafe](https://maven.apache.org/surefire/maven-failsafe-plugin/) when running unit or integration tests.
 
@@ -73,3 +77,7 @@ In case of a directory, Sandboy will only process Surefire XML files and skip al
 #### generatedReportPath
 
 This is the path to store the generated report in.
+
+## Sample Report
+
+![report.png](doc/report.png)
