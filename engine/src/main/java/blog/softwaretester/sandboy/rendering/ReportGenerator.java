@@ -44,7 +44,7 @@ public class ReportGenerator {
     }
 
     private void copyTemplateResource(final String resource) throws SandboyException {
-        String source = "/template" + File.separator + resource;
+        String source = "/template/" + resource;
         String destination = propertyManager.getReportPath() + File.separator + resource;
         fileIO.copyResourceFromJar(source, destination);
     }
