@@ -19,7 +19,7 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>blog.softwaretester.sandboy</groupId>
+                <groupId>blog.softwaretester</groupId>
                 <artifactId>sandboy-maven</artifactId>
                 <version>${project.version}</version>
                 <executions>

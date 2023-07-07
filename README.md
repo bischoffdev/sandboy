@@ -8,10 +8,10 @@ _Clear and concise Surefire reporting!_
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Maven usage](#maven-usage)
-  - [Plugin dependency](#plugin-dependency)
-  - [Report generation](#report-generation)
-    - [surefireSourcePath](#surefiresourcepath)
-    - [generatedReportPath](#generatedreportpath)
+    - [Plugin dependency](#plugin-dependency)
+    - [Report generation](#report-generation)
+        - [surefireSourcePath](#surefiresourcepath)
+        - [generatedReportPath](#generatedreportpath)
 - [Sample Report](#sample-report)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -38,7 +38,7 @@ You can add this plugin dependency to your Maven project's build section like so
 <build>
     <plugins>
         <plugin>
-            <groupId>blog.softwaretester.sandboy</groupId>
+            <groupId>blog.softwaretester</groupId>
             <artifactId>sandboy-maven</artifactId>
             <version>${project.version}</version>
             <executions>

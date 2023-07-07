@@ -5,7 +5,7 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>blog.softwaretester.sandboy</groupId>
+    <groupId>blog.softwaretester</groupId>
     <artifactId>sandboy-parent</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
