@@ -79,40 +79,6 @@
                     </archive>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <failOnWarnings>false</failOnWarnings>
-                    <sourcepath>${basedir}/src/main/java</sourcepath>
-                    <additionalJOptions>
-                        <additionalJOption>-Xmaxerrs</additionalJOption>
-                        <additionalJOption>65536</additionalJOption>
-                        <additionalJOption>-Xmaxwarns</additionalJOption>
-                        <additionalJOption>65536</additionalJOption>
-                    </additionalJOptions>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
