@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 Back to [Readme](README.md).
 
+## [1.1.1] - 2023-07-10
+
+### Removed
+
+* Unnecessary error logging
+
 ## [1.1.0] - 2023-07-10
 
 ### Added
@@ -25,6 +31,8 @@ Back to [Readme](README.md).
 ## [1.0.0] - 2023-07-07
 
 Initial project version on GitHub and Maven Central.
+
+[1.1.1]: https://github.com/bischoffdev/sandboy/tree/1.1.1
 
 [1.1.0]: https://github.com/bischoffdev/sandboy/tree/1.1.0
 

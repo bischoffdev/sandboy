@@ -84,9 +84,6 @@ public class Testcase {
         } else if (skipped != null && !skipped.isBlank()) {
             status = Status.SKIPPED;
         }
-
-        System.out.println("--- ERROR --- " + name);
-        System.out.println(combinedErrorText + " " + status);
         return status;
     }
 }
