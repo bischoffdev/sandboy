@@ -15,7 +15,7 @@
     <div class="grid">
         <div id="testsuiteArea">
             <article style="height: 90%;">
-                <header>${testSuites?size} Test Suite(s)</header>
+                <header>${testSuites?size} Test Suite(s) with ${numberOfTestcases} Test Case(s)</header>
                 <ol>
                     <#list testSuites as testSuite>
                         <li><a href="#test-suite-${testSuite?counter}">${testSuite.name}</a></li>
@@ -25,7 +25,13 @@
         </div>
         <div id="chartArea">
             <article style="height: 90%;">
-                <header>Chart</header>
+                <header>
+                    <div style="text-align: center">
+                        <span class="passed">Passed:</span> ${numberOfPassedTestcases} |
+                        <span class="failed">Failed:</span> ${numberOfFailedTestcases} |
+                        <span class="skipped">Skipped:</span> ${numberOfSkippedTestcases}
+                    </div>
+                </header>
                 <div class="ct-chart ct-chart-donut ct-perfect-fifth"></div>
             </article>
         </div>
@@ -33,11 +39,13 @@
     <#list testSuites as testSuite>
         <article>
             <header>
-                <h4 id="test-suite-${testSuite?counter}">${testSuite?counter}. ${testSuite.name}</h4>
-                <span class="passed">Passed:</span> ${testSuite.numberOfPassedTestcases} |
-                <span class="failed">Failed:</span> ${testSuite.numberOfFailedTestcases} |
-                <span class="skipped">Skipped:</span> ${testSuite.numberOfSkippedTestcases} |
-                ${testSuite.time?c} seconds
+                <h4 id="test-suite-${testSuite?counter}">${testSuite.name}</h4>
+                <i>
+                    <span class="passed">Passed:</span> ${testSuite.numberOfPassedTestcases} |
+                    <span class="failed">Failed:</span> ${testSuite.numberOfFailedTestcases} |
+                    <span class="skipped">Skipped:</span> ${testSuite.numberOfSkippedTestcases} |
+                    ${testSuite.time?c} seconds
+                </i>
             </header>
 
             <#if testSuite.getNumberOfFailedTestcases() gt 0 >
@@ -74,11 +82,11 @@
 
 <script type="text/javascript">
     const data = {
-        labels: ['Passed', 'Failed', 'Skipped'],
+        labels: [' ', ' ', ' '],
         series: [
-            {value: 1, className: 'passed'},
-            {value: 2, className: 'failed'},
-            {value: 3, className: 'skipped'}
+            {value: ${numberOfPassedTestcases}, className: 'passed'},
+            {value: ${numberOfFailedTestcases}, className: 'failed'},
+            {value: ${numberOfSkippedTestcases}, className: 'skipped'}
         ]
     };
     const config = {
