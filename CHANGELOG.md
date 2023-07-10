@@ -26,4 +26,6 @@ Back to [Readme](README.md).
 
 Initial project version on GitHub and Maven Central.
 
+[1.1.0]: https://github.com/bischoffdev/sandboy/tree/1.1.0
+
 [1.0.0]: https://github.com/bischoffdev/sandboy/tree/1.0.0
