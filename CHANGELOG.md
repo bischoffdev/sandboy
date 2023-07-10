@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 Back to [Readme](README.md).
 
-## [1.0.0] - UNRELEASED
+## [1.0.0] - 2023-07-07
 
 Initial project version on GitHub and Maven Central.
 
