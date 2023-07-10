@@ -88,14 +88,6 @@ public class TestSuite {
         return text;
     }
 
-    public int getErrorCount() {
-        return failures + errors;
-    }
-
-    public int getPassCount() {
-        return tests - getErrorCount();
-    }
-
     public int getNumberOfTestcases() {
         return testcases.size();
     }

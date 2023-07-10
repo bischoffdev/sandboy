@@ -49,7 +49,6 @@ public class FileIO {
                     outputStream.write(buffer, 0, readBytes);
                 }
             } catch (Exception e) {
-                e.printStackTrace();
                 throw new SandboyException("Cannot write resource '" + resourceName + "': " + e.getMessage());
             }
         } catch (Exception e) {

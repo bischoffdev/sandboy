@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 Back to [Readme](README.md).
 
+## [1.1.0] - UNRELEASED
+
+### Added
+
+* Chart view
+* List of test suites
+
+### Changed
+
+* New color scheme
+
+### Fixed
+
+* Null pointer on Windows when copying css resources [#2]
+
 ## [1.0.0] - 2023-07-07
 
 Initial project version on GitHub and Maven Central.
