@@ -4,7 +4,7 @@
 }
 
 article {
-    margin: 0;
+    margin: 1rem;
 }
 
 footer {
@@ -25,17 +25,42 @@ td, th {
     vertical-align: top;
 }
 
+.passed {
+    color: #438fcd;
+}
+
+.failed {
+    color: #d14d45;
+}
+
+.skipped {
+    color: #efa23e;
+}
+
 article.passed header {
-    border: #438fcd 2px solid;
     background-color: #438fcd30;
 }
 
 article.failed header {
-    border: #d14d45 2px solid;
     background-color: #d14d4530;
 }
 
 article.skipped header {
-    border: #efa23e 2px solid;
     background-color: #efa23e30;
+}
+
+ol {
+    margin-left: 0.75rem;
+}
+
+g.ct-series.passed {
+    stroke: #438fcd;
+}
+
+g.ct-series.failed {
+    stroke: #d14d45;
+}
+
+g.ct-series.skipped {
+    stroke: #efa23e;
 }

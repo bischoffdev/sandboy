@@ -39,8 +39,12 @@ public class ReportGenerator {
         String rootPath = propertyManager.getReportPath();
         fileIO.createDirectory(rootPath);
         fileIO.createDirectory(rootPath + File.separator + "css");
+        fileIO.createDirectory(rootPath + File.separator + "js");
         copyTemplateResource("css/pico.min.css");
         copyTemplateResource("css/override.css");
+        copyTemplateResource("css/chartist.min.css");
+        copyTemplateResource("js/chartist.min.js");
+//        copyTemplateResource("js/chart.min.js");
     }
 
     private void copyTemplateResource(final String resource) throws SandboyException {

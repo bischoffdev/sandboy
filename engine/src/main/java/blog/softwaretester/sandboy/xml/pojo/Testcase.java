@@ -78,12 +78,15 @@ public class Testcase {
 
     public Status getStatus() {
         String errorText = getErrorText();
+        Status status = Status.PASSED;
         if (errorText != null && !errorText.isBlank()) {
-            return Status.FAILED;
+            status = Status.FAILED;
         } else if (skipped != null && !skipped.isBlank()) {
-            return Status.SKIPPED;
-        } else {
-            return Status.PASSED;
+            status = Status.SKIPPED;
         }
+
+        System.out.println("--- ERROR --- " + name);
+        System.out.println(combinedErrorText + " " + status);
+        return status;
     }
 }
