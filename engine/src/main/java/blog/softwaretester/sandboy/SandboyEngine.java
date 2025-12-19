@@ -13,6 +13,7 @@ import blog.softwaretester.sandboy.xml.pojo.TestSuite;
 
 import javax.inject.Inject;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,7 +69,11 @@ public class SandboyEngine {
 
         reportGenerator.generate(pageData);
         logger.info(
-                "=> Sandboy Report: " + properties.getReportPath() + "/" +
-                        Constants.START_PAGE + Constants.HTML_FILE_EXTENSION);
+                "=> Sandboy Report: " + Paths.get(properties.getReportPath())
+                        .resolve(Constants.START_PAGE + Constants.HTML_FILE_EXTENSION)
+                        .toAbsolutePath()
+                        .toUri()
+                        .toString()
+        );
     }
 }

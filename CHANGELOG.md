@@ -11,6 +11,7 @@ Back to [Readme](README.md).
 
 ### Changed
 
+* Report link is now an absolute file path
 * Updated Dagger to `2.57.2`
 * Updated Freemarker to `2.3.34`
 * Updated Jackson to `2.20.1`
