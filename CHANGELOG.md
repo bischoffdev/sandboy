@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 Back to [Readme](README.md).
 
+## [1.1.2] - 2025-12-19
+
+### Changed
+
+* Updated Dagger to `2.57.2`
+* Updated Freemarker to `2.3.34`
+* Updated Jackson to `2.20.1`
+* Updated Mockito to `5.21.0`
+* Updated Maven Jar plugin to `3.5.0`
+* Updated Maven Compiler plugin to `3.14.1`
+* Removed xstream dependency
+
 ## [1.1.1] - 2023-07-10
 
 ### Removed
@@ -31,6 +43,8 @@ Back to [Readme](README.md).
 ## [1.0.0] - 2023-07-07
 
 Initial project version on GitHub and Maven Central.
+
+[1.1.2]: https://github.com/bischoffdev/sandboy/tree/1.1.2
 
 [1.1.1]: https://github.com/bischoffdev/sandboy/tree/1.1.1
 

@@ -7,11 +7,11 @@
     <parent>
         <groupId>blog.softwaretester</groupId>
         <artifactId>sandboy-parent</artifactId>
-        <version>1.1.1</version>
+        <version>1.1.2</version>
     </parent>
 
     <artifactId>sandboy-maven</artifactId>
-    <version>1.1.1</version>
+    <version>1.1.2</version>
 
     <packaging>maven-plugin</packaging>
 
@@ -19,15 +19,15 @@
     <description>The Sandboy Maven plugin.</description>
 
     <properties>
-        <maven.compiler.release>11</maven.compiler.release>
+        <maven.compiler.release>17</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <maven-artifact.version>3.9.3</maven-artifact.version>
+        <maven-artifact.version>3.9.8</maven-artifact.version>
         <maven-model.version>3.9.3</maven-model.version>
         <maven-plugin-annotations.version>3.9.0</maven-plugin-annotations.version>
         <maven-plugin-api.version>3.9.3</maven-plugin-api.version>
         <javax.inject.version>1</javax.inject.version>
-        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.14.1</maven-compiler-plugin.version>
         <maven-plugin-plugin.version>3.9.0</maven-plugin-plugin.version>
         <properties-maven-plugin.version>1.1.0</properties-maven-plugin.version>
     </properties>

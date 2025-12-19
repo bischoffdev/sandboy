@@ -8,24 +8,24 @@
     <parent>
         <groupId>blog.softwaretester</groupId>
         <artifactId>sandboy-parent</artifactId>
-        <version>1.1.1</version>
+        <version>1.1.2</version>
     </parent>
 
     <artifactId>sandboy-engine</artifactId>
-    <version>1.1.1</version>
+    <version>1.1.2</version>
 
     <properties>
-        <maven.compiler.release>11</maven.compiler.release>
+        <maven.compiler.release>17</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.14.1</maven-compiler-plugin.version>
         <tinylog-impl.version>2.5.0</tinylog-impl.version>
-        <freemarker.version>2.3.31</freemarker.version>
+        <freemarker.version>2.3.34</freemarker.version>
         <jdom2.version>2.0.6.1</jdom2.version>
-        <dagger.version>2.46</dagger.version>
+        <dagger.version>2.57.2</dagger.version>
         <property-aggregator.version>1.5.0</property-aggregator.version>
-        <maven-jar-plugin.version>3.2.2</maven-jar-plugin.version>
-        <jackson-dataformat-xml.version>2.15.0</jackson-dataformat-xml.version>
+        <maven-jar-plugin.version>3.5.0</maven-jar-plugin.version>
+        <jackson-dataformat-xml.version>2.20.1</jackson-dataformat-xml.version>
     </properties>
 
     <dependencies>
