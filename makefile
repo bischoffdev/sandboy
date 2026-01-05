@@ -13,7 +13,7 @@ show-versions: ## Show most recent dependency versions
 .PHONY: show-versions
 
 deploy: ## Deploy the plugin
-	./mvnw clean deploy -B -Prelease -no-transfer-progress
+	./mvnw clean deploy -U -B -Prelease -no-transfer-progress
 
 set-maven-version: ## Change the version of the Maven wrapper
 	@if test -z "$(MAVEN_VERSION)"; then echo "No MAVEN_VERSION set!"; exit 1; fi
